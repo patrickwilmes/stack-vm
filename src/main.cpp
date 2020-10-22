@@ -1,12 +1,9 @@
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
 #include "preprocessing/Preprocessing.h"
-
-typedef enum {
-    HLT,
-    PSH,
-    POP,
-    ADD,
-} Instructions;
+#include "instructions.h"
 
 class Executor {
 public:
@@ -55,18 +52,42 @@ private:
     int (&program)[256];
 };
 
+int instructionFor(const std::string& cmd) {
+    if (cmd == "PSH")
+        return PSH;
+    if (cmd == "ADD")
+        return ADD;
+    if (cmd == "POP")
+        return POP;
+    if (cmd == "HLT")
+        return HLT;
+}
+
 int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        std::cerr << "Usage ./toyvm <NAME>.toy" << std::endl;
+        return -1;
+    }
+
     int p[256];
     for (int & i : p) {
         i = -1;
     }
-    p[0] = PSH;
-    p[1] = 10;
-    p[2] = PSH;
-    p[3] = 20;
-    p[4] = ADD;
-    p[5] = POP;
-    p[6] = HLT;
+    int pc = -1;
+    std::cout << argv[1] << std::endl;
+    std::ifstream infile(argv[1]);
+    std::string line;
+    std::string a;
+    int b;
+    while (std::getline(infile, line)) {
+        std::istringstream iss(line);
+        if (!(iss >> a >> b)) {
+            p[++pc] = instructionFor(a);
+            continue;
+        }
+        p[++pc] = instructionFor(a);
+        p[++pc] = b;
+    }
 
     if (!isValidProgram(p)) {
         std::cerr << "Program doesn't contain HLT" << std::endl;
