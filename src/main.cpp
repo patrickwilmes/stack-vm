@@ -7,11 +7,10 @@
 
 class Executor {
 public:
-    Executor(int (&program)[256]): program(program) {
+    explicit Executor(int (&program)[256]): program(program) {
         initializeIntArr(stack, 256);
     }
 
-    Executor(int (*program)[256]): program(*program) {}
     ~Executor() = default;
 
     void execute() {
@@ -61,7 +60,7 @@ public:
     }
 
 private:
-    int stack[256];
+    int stack[256]{};
     int (&program)[256];
 };
 
