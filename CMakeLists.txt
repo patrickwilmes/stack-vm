@@ -4,6 +4,6 @@ project(toyvm)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(SOURCE src/main.cpp src/preprocessing/Preprocessing.h src/preprocessing/validation.cpp src/instructions.h)
+set(SOURCE src/main.cpp src/preprocessing/Preprocessing.h src/preprocessing/validation.cpp src/instructions.h src/io/io.h src/io/loader.cpp src/utils.h)
 
 add_executable(toyvm ${SOURCE})

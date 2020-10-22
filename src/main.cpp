@@ -1,17 +1,15 @@
 #include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
 #include "preprocessing/Preprocessing.h"
 #include "instructions.h"
+#include "io/io.h"
+#include "utils.h"
 
 class Executor {
 public:
     Executor(int (&program)[256]): program(program) {
-        for (int & i : stack) {
-            i = -1;
-        }
+        initializeIntArr(stack, 256);
     }
+
     Executor(int (*program)[256]): program(*program) {}
     ~Executor() = default;
 
@@ -59,18 +57,6 @@ private:
     int (&program)[256];
 };
 
-int instructionFor(const std::string& cmd) {
-    if (cmd == "PSH")
-        return PSH;
-    if (cmd == "ADD")
-        return ADD;
-    if (cmd == "POP")
-        return POP;
-    if (cmd == "DIV")
-        return DIV;
-    return HLT;
-}
-
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         std::cerr << "Usage ./toyvm <NAME>.toy" << std::endl;
@@ -78,24 +64,10 @@ int main(int argc, char* argv[]) {
     }
 
     int p[256];
-    for (int & i : p) {
-        i = -1;
-    }
-    int pc = -1;
-    std::cout << argv[1] << std::endl;
-    std::ifstream infile(argv[1]);
-    std::string line;
-    std::string a;
-    int b;
-    while (std::getline(infile, line)) {
-        std::istringstream iss(line);
-        if (!(iss >> a >> b)) {
-            p[++pc] = instructionFor(a);
-            continue;
-        }
-        p[++pc] = instructionFor(a);
-        p[++pc] = b;
-    }
+
+    initializeIntArr(p, 256);
+
+    loadProgram(argv[1], p);
 
     if (!isValidProgram(p)) {
         std::cerr << "Program doesn't contain HLT" << std::endl;
