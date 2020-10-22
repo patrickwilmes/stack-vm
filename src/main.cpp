@@ -42,6 +42,13 @@ public:
                     stack[++sp] = result;
                     break;
                 }
+                case MUL: {
+                    int a = stack[sp];
+                    int b = stack[--sp];
+                    int result = a * b;
+                    stack[++sp] = result;
+                    break;
+                }
                 case POP: {
                     int val = stack[sp--];
                     std::cout << val << std::endl;

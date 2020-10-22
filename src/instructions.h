@@ -10,6 +10,7 @@ typedef enum {
     POP,
     ADD,
     DIV,
+    MUL,
 } Instructions;
 
 inline static std::map<std::string, Instructions> instructionMappings = {
@@ -18,6 +19,7 @@ inline static std::map<std::string, Instructions> instructionMappings = {
         {"POP", POP},
         {"ADD", ADD},
         {"DIV", DIV},
+        {"MUL", MUL},
 };
 
 inline int instructionFor(const std::string& cmd) {
