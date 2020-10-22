@@ -6,6 +6,7 @@ typedef enum {
     PSH,
     POP,
     ADD,
+    DIV,
 } Instructions;
 
 #endif //TOYVM_INSTRUCTIONS_H

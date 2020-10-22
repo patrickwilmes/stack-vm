@@ -37,6 +37,13 @@ public:
                     stack[++sp] = result;
                     break;
                 }
+                case DIV: {
+                    int a = stack[sp];
+                    int b = stack[--sp];
+                    int result = b / a;
+                    stack[++sp] = result;
+                    break;
+                }
                 case POP: {
                     int val = stack[sp--];
                     std::cout << val << std::endl;
@@ -59,8 +66,9 @@ int instructionFor(const std::string& cmd) {
         return ADD;
     if (cmd == "POP")
         return POP;
-    if (cmd == "HLT")
-        return HLT;
+    if (cmd == "DIV")
+        return DIV;
+    return HLT;
 }
 
 int main(int argc, char* argv[]) {
