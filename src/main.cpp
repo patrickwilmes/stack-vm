@@ -3,6 +3,7 @@
 #include "instructions.h"
 #include "io/io.h"
 #include "utils.h"
+#include "parser.h"
 
 class Executor {
 public:
@@ -74,12 +75,11 @@ int main(int argc, char* argv[]) {
 
     initializeIntArr(p, 256);
 
-    loadProgram(argv[1], p);
+    std::vector<std::string> code;
+    loadProgram(argv[1], code);
+    code = removeComments(code);
 
-    if (!isValidProgram(p)) {
-        std::cerr << "Program doesn't contain HLT" << std::endl;
-        return -1;
-    }
+    parseProgramm(code, p);
 
     Executor executor(p);
     executor.execute();

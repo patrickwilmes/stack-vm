@@ -22,3 +22,11 @@ void loadProgram(const std::string& file, int *program) {
     }
 }
 
+void loadProgram(const std::string& file, std::vector<std::string> &code) {
+    std::ifstream infile(file);
+    std::string line;
+    std::string a;
+    while (std::getline(infile, line)) {
+        code.push_back(line);
+    }
+}
