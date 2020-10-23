@@ -1,72 +1,9 @@
 #include <iostream>
 #include "preprocessing/Preprocessing.h"
-#include "instructions.h"
 #include "io/io.h"
 #include "utils.h"
 #include "parser.h"
-
-class Executor {
-public:
-    explicit Executor(int (&program)[256]): program(program) {
-        initializeIntArr(stack, 256);
-    }
-
-    ~Executor() = default;
-
-    void execute() {
-        bool running = true;
-        int ip = 0;
-        int sp = -1;
-        while (running) {
-            switch (program[ip]) {
-                case HLT: {
-                    running = false;
-                    break;
-                }
-                case PSH: {
-                    int val = program[ip+1];
-                    stack[++sp] = val;
-                    break;
-                }
-                case ADD: {
-                    int a = stack[sp];
-                    int b = stack[--sp];
-                    int result = a + b;
-                    stack[++sp] = result;
-                    break;
-                }
-                case DIV: {
-                    int a = stack[sp];
-                    int b = stack[--sp];
-                    int result = b / a;
-                    stack[++sp] = result;
-                    break;
-                }
-                case MUL: {
-                    int a = stack[sp];
-                    int b = stack[--sp];
-                    int result = a * b;
-                    stack[++sp] = result;
-                    break;
-                }
-                case POP: {
-                    sp--;
-                    break;
-                }
-                case PRT: {
-                    int val = stack[sp];
-                    std::cout << val << std::endl;
-                    break;
-                }
-            }
-            ip++;
-        }
-    }
-
-private:
-    int stack[256]{};
-    int (&program)[256];
-};
+#include "executor.h"
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -84,7 +21,7 @@ int main(int argc, char* argv[]) {
 
     parseProgramm(code, p);
 
-    Executor executor(p);
+    StackExecutor executor(p);
     executor.execute();
 
     return 0;
