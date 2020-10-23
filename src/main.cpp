@@ -50,7 +50,11 @@ public:
                     break;
                 }
                 case POP: {
-                    int val = stack[sp--];
+                    sp--;
+                    break;
+                }
+                case PRT: {
+                    int val = stack[sp];
                     std::cout << val << std::endl;
                     break;
                 }
