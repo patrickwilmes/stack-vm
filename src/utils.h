@@ -1,5 +1,5 @@
-#ifndef TOYVM_UTILS_H
-#define TOYVM_UTILS_H
+#ifndef STACKVM_UTILS_H
+#define STACKVM_UTILS_H
 
 #include <string>
 #include <algorithm>
@@ -16,4 +16,4 @@ inline static void ltrim(std::string &line) {
     }));
 }
 
-#endif //TOYVM_UTILS_H
+#endif //STACKVM_UTILS_H

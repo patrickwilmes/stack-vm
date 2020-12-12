@@ -1,5 +1,5 @@
-#ifndef TOYVM_EXECUTOR_H
-#define TOYVM_EXECUTOR_H
+#ifndef STACKVM_EXECUTOR_H
+#define STACKVM_EXECUTOR_H
 
 #include "utils.h"
 
@@ -25,4 +25,4 @@ private:
     int stack[256]{};
 };
 
-#endif //TOYVM_EXECUTOR_H
+#endif //STACKVM_EXECUTOR_H

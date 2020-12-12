@@ -14,9 +14,9 @@ make
 ## Running
 
 ```bash
-./toyvm <TOY_FILE>
+./stack_vm <STACK_FILE>
 # Example
-./toyvm resources/add.toy
+./stack_vm resources/add.sv
 ```
 
 ## Op Codes
@@ -37,3 +37,20 @@ sub # subtract the last two numbers
 div # divide the last two numbers
 mul # multiplicate the last two numbers
 ```
+
+## About stack based vms
+Stack based vms are the most simple kind of virtual machines. They use a simple stack datastructures for execution.
+Each op code will be parsed and loaded into memory. After loading the program into memory, the vm starts execution
+of the first command. If we for example have two PSH (push) and one ADD operations the following will happen:
+
+```
+PHS 10 encountered so program instruction pointer increased by 1
+and 10 pushed onto the value stack
+PSH 20 encountered so program insturction pointer increased by 1
+and 20 pushed onto the value stack
+ADD encountered  so program instruction pointer increased by 1 and
+vm will call 2 times pop on the stack which will return 20 and 10 (in the given order) and will add them.
+```
+Stack based virtual machines are nice from an educational point of view as they are very easy to implement and to
+understand, but the practical used in limited.
+Modern vms are register based vm. (Maybe I'll build one in the future.)

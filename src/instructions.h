@@ -1,5 +1,5 @@
-#ifndef TOYVM_INSTRUCTIONS_H
-#define TOYVM_INSTRUCTIONS_H
+#ifndef STACKVM_INSTRUCTIONS_H
+#define STACKVM_INSTRUCTIONS_H
 
 #include <map>
 #include <string>
@@ -29,4 +29,4 @@ inline static std::map<std::string, Instructions> instructionMappings = {
 inline int instructionFor(const std::string& cmd) {
     return instructionMappings[cmd];
 }
-#endif //TOYVM_INSTRUCTIONS_H
+#endif //STACKVM_INSTRUCTIONS_H
