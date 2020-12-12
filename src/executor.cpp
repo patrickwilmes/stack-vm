@@ -25,6 +25,13 @@ void StackExecutor::execute() {
                 stack[++sp] = result;
                 break;
             }
+            case SUB: {
+                int a = stack[sp];
+                int b = stack[--sp];
+                int result = a - b;
+                stack[++sp] = result;
+                break;
+            }
             case DIV: {
                 int a = stack[sp];
                 int b = stack[--sp];

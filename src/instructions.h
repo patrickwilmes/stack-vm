@@ -9,6 +9,7 @@ typedef enum {
     PSH,
     POP,
     ADD,
+    SUB,
     DIV,
     MUL,
     PRT
@@ -19,6 +20,7 @@ inline static std::map<std::string, Instructions> instructionMappings = {
         {"PSH", PSH},
         {"POP", POP},
         {"ADD", ADD},
+        {"SUB", SUB},
         {"DIV", DIV},
         {"MUL", MUL},
         {"PRT", PRT},
