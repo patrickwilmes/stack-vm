@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 
-void loadProgram(const std::string& file, int *program);
 void loadProgram(const std::string& file, std::vector<std::string> &code);
 
 #endif //STACKVM_IO_H

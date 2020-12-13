@@ -1,4 +1,4 @@
-#ifndef STACKVM_UTILS_H
+    #ifndef STACKVM_UTILS_H
 #define STACKVM_UTILS_H
 
 #include <string>
