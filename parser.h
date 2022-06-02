@@ -4,6 +4,6 @@
 #include <vector>
 #include <string>
 
-void parseProgramm(std::vector<std::string> &code, int *program);
+void parse_program(std::vector<std::string> &code, int *program);
 
 #endif //STACKVM_PARSER_H

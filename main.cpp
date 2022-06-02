@@ -1,5 +1,5 @@
 #include <iostream>
-#include "preprocessing/Preprocessing.h"
+#include "preprocessing/preprocessing.h"
 #include "io/io.h"
 #include "utils.h"
 #include "parser.h"
@@ -13,13 +13,14 @@ int main(int argc, char* argv[]) {
 
     int p[256];
 
-    initializeIntArr(p, 256);
+    initialize_int_array(p, 256);
 
     std::vector<std::string> code;
-    loadProgram(argv[1], code);
-    code = removeComments(code);
+    if (!load_program(argv[1], code))
+        return -1;
+    code = remove_comments(code);
 
-    parseProgramm(code, p);
+    parse_program(code, p);
 
     StackExecutor executor(p);
     executor.execute();

@@ -17,8 +17,8 @@ protected:
 
 class StackExecutor: public Executor {
 public:
-    StackExecutor(int (&program)[256]) : Executor(program) {
-        initializeIntArr(stack, 256);
+    explicit StackExecutor(int (&program)[256]) : Executor(program) {
+        initialize_int_array(stack, 256);
     }
     void execute() override;
 private:

@@ -15,7 +15,7 @@ typedef enum {
     PRT
 } Instructions;
 
-inline static std::map<std::string, Instructions> instructionMappings = {
+inline static std::map<std::string, Instructions> instruction_mappings = {
         {"HLT", HLT},
         {"PSH", PSH},
         {"POP", POP},
@@ -26,7 +26,7 @@ inline static std::map<std::string, Instructions> instructionMappings = {
         {"PRT", PRT},
 };
 
-inline int instructionFor(const std::string& cmd) {
-    return instructionMappings[cmd];
+inline int get_instruction_for(const std::string& cmd) {
+    return instruction_mappings[cmd];
 }
 #endif //STACKVM_INSTRUCTIONS_H

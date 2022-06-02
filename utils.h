@@ -1,10 +1,10 @@
-    #ifndef STACKVM_UTILS_H
+#ifndef STACKVM_UTILS_H
 #define STACKVM_UTILS_H
 
 #include <string>
 #include <algorithm>
 
-inline void initializeIntArr(int *arr, unsigned int size) {
+inline void initialize_int_array(int *arr, unsigned int size) {
     for (int i = 0; i < size; i++) {
         arr[i] = -1;
     }

@@ -4,6 +4,19 @@ project(stack_vm)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(SOURCE src/main.cpp src/preprocessing/Preprocessing.h src/instructions.h src/io/io.h src/io/loader.cpp src/utils.h src/preprocessing/preprocessing.cpp src/parser.h src/parser.cpp src/executor.h src/executor.cpp)
+set(SOURCE
+        main.cpp
+        preprocessing/preprocessing.h
+        preprocessing/preprocessing.cpp
+        utils.h
+        instructions.h
+        io/io.h
+        io/loader.cpp
+        parser.h
+        parser.cpp
+        executor.h
+        executor.cpp
+        )
+include_directories(.)
 
 add_executable(stack_vm ${SOURCE})
