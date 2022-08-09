@@ -1,14 +1,23 @@
 # Stack VM
 
-Stack VM is a very simple vm using a stack for op code execution. The purpose of stack vm is purely educational.
+Stack VM is a very simple vm using a stack for op code execution. The purpose of stack vm is purely educational. We are not working with binary code here, but with plan instructions (text) for the sake
+of simplicity.
+Maybe in the future we'll build an assembler.
 
 ## Compiling
 
 ```bash
+# building with make
 mkdir build
 cd build
 cmake ..
 make
+
+# Alternative with ninja
+mkdir build
+cd build
+cmake .. -GNinja
+ninja
 ```
 
 ## Running

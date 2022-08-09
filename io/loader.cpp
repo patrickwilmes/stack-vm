@@ -5,9 +5,6 @@
 #include <filesystem>
 #include <iostream>
 
-bool file_exists(const std::string& file) {
-    return std::filesystem::exists(file);
-}
 
 int load_program(const std::string& file, std::vector<std::string> &code) {
     if (!std::filesystem::exists(file)) {
